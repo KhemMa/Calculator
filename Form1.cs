@@ -72,12 +72,13 @@ namespace WindowsFormsApp1
                 default:
                     break;
             }
+            op_pressed = false;
             calculated = true;
         }
 
         private void dotted(object sender,EventArgs e)
         {
-            if (byzero) return;
+            if (byzero || op_pressed) return;
             if (!result.Text.Contains("."))
             {
                     Button b = (Button)sender;
@@ -87,7 +88,7 @@ namespace WindowsFormsApp1
 
         private void back_space(object sender, EventArgs e)
         {
-            if(byzero) return;
+            if(byzero|| op_pressed) return;
             if (result.Text.Length > 0)
             {
                 result.Text = result.Text.Remove(result.Text.Length - 1);
@@ -105,7 +106,7 @@ namespace WindowsFormsApp1
 
         private void negative(object sender,EventArgs e)
         {
-            if (byzero) return;
+            if (byzero || op_pressed) return;
             if (!result.Text.Contains("-") && result.Text!="0")
             {
                 result.Text = "-" + result.Text;
