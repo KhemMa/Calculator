@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
         Double value = 0;
         bool op_pressed = false;
+        bool calculated = false;
         String opt ="";
         bool byzero = false;
 
@@ -24,7 +25,11 @@ namespace WindowsFormsApp1
 
         private void num_button_Click(object sender, EventArgs e)
         {
-            if (result.Text == "0" || op_pressed || byzero) { result.Clear(); if (byzero) byzero = false; }
+            if(result.Text == "0" || op_pressed || byzero ||calculated) { 
+                result.Clear(); 
+                if (byzero) byzero = false;
+                calculated = false;
+            }
             op_pressed = false;
             Button b = (Button)sender;
             result.Text = result.Text + b.Text;
@@ -67,6 +72,7 @@ namespace WindowsFormsApp1
                 default:
                     break;
             }
+            calculated = true;
         }
 
         private void dotted(object sender,EventArgs e)
